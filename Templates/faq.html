@@ -1,0 +1,238 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FAQ - Ask a Question</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Orbitron', sans-serif;
+            background: url("{% static 'background1.jpg' %}") no-repeat center center fixed;
+            background-size: cover;
+            color: #E0E1DD;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 1rem;
+        }
+
+        .faq-form-container {
+            background-color: rgba(0, 0, 0, 0.75);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 0 20px #00ffff88;
+            max-width: 600px;
+            width: 100%;
+            animation: fadeInUp 1.2s ease-in;
+        }
+
+        h2 {
+            text-align: center;
+            color: #00FFFF;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+        }
+
+        .form-input,
+        .form-textarea,
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 1rem;
+            margin-bottom: 1.2rem;
+            background: transparent;
+            border: 2px solid #00FFFF;
+            border-radius: 8px;
+            color: white;
+            font-size: 1rem;
+        }
+
+        .form-button {
+            background: #00FFFF;
+            color: black;
+            border: none;
+            padding: 1rem;
+            width: 100%;
+            font-weight: bold;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.3s ease-in-out;
+        }
+
+        .form-button:hover {
+            background: #00c0d1;
+            box-shadow: 0 0 12px #00FFFF;
+        }
+
+        @keyframes fadeInLeftFull {
+            0% {
+                opacity: 0;
+                transform: translateX(-100vw);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .back {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            animation: fadeInLeftFull 2.5s ease-out;
+        }
+
+
+        .button {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #00FFFF;
+            border: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 5px #FF073A, 0 0 10px #FF073A;
+            cursor: pointer;
+            transition-duration: 0.3s;
+            position: absolute;
+        }
+
+        .svgIcon {
+            width: 12px;
+            transition-duration: 0.3s;
+        }
+
+        .svgIcon path {
+            fill: #FF073A;
+        }
+
+        .button:hover {
+            width: 140px;
+            border-radius: 50px;
+            transition-duration: 0.3s;
+            background-color: #00FFFF;
+            align-items: center;
+        }
+
+        .button:hover .svgIcon {
+            transition-duration: 0.2s;
+            transform: translateX(-800%);
+        }
+
+        .button::before {
+            position: absolute;
+            bottom: -20px;
+            content: "Back";
+            color: #FF073A;
+            font-size: 0px;
+        }
+
+        .button:hover::before {
+            font-size: 13px;
+            opacity: 1;
+            bottom: unset;
+            transition-duration: 0.3s;
+        }
+
+        @keyframes fadeInLeftFull {
+            0% {
+                opacity: 0;
+                transform: translateX(-100vw);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .faq-form-container {
+                padding: 1.5rem;
+            }
+
+            h2 {
+                font-size: 1.6rem;
+            }
+
+            .form-button {
+                font-size: 0.95rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h2 {
+                font-size: 1.4rem;
+            }
+
+            .form-button {
+                font-size: 0.9rem;
+                padding: 0.9rem;
+            }
+
+            input[type="text"],
+            input[type="email"],
+            textarea {
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="back">
+        <a href="{% url 'home' %}">
+            <button class="button">
+                <svg class="svgIcon" viewBox="0 0 384 512">
+                    <path
+                        d="M32 256L192 416c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9L97.9 256 225.9 128c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0L32 256z">
+                    </path>
+                </svg>
+            </button>
+        </a>
+    </div>
+    <div class="faq-form-container">
+        <h2>Ask a Question</h2>
+        {% if messages %}
+        {% for message in messages %}
+        <p style="color:#00ffff; text-align: center;">{{ message }}</p>
+        {% endfor %}
+        {% endif %}
+        <form method="post">
+            {% csrf_token %}
+            <input type="text" name="name" placeholder="Your Name" class="form-input" required>
+            <input type="email" name="email" placeholder="Your Email" class="form-input" required>
+            <textarea name="question" placeholder="Your Question" class="form-textarea" rows="5" required></textarea>
+            <button type="submit" class="form-button">Send Question</button>
+        </form>
+    </div>
+</body>
+
+</html>

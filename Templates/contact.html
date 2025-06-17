@@ -1,0 +1,466 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Orbitron', sans-serif;
+            color: #e0e1dd;
+        }
+
+        section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .contact-header-section {
+            background-image: url("{% static 'background.jpg' %}");
+            flex-direction: column;
+        }
+
+        .contact-header-content {
+            max-width: 900px;
+            width: 100%;
+            padding: 1rem;
+        }
+
+        @keyframes fadeInRightFull {
+            from {
+                opacity: 0;
+                transform: translateX(100%);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .contact-heading {
+            font-size: 3rem;
+            color: #00FFFF;
+            margin-bottom: 1rem;
+            animation: fadeInRightFull 1.5s ease-out forwards;
+        }
+
+        @keyframes fadeInLeftFull {
+            from {
+                opacity: 0;
+                transform: translateX(-100%);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .contact-subheading {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            font-family: 'Petrona', serif;
+            padding: 0 1rem;
+            animation: fadeInLeftFull 1.5s ease-out forwards;
+            animation-delay: 0.5s;
+            opacity: 0;
+        }
+
+        @keyframes fadeInBottomFull {
+            from {
+                opacity: 0;
+                transform: translateY(100%);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .scroll-down-arrow {
+            margin-top: 2rem;
+            animation: bounce 2s infinite;
+            cursor: pointer;
+            animation: fadeInBottomFull 1.5s ease-out forwards;
+            animation-delay: 1s;
+            opacity: 0;
+        }
+
+        .scroll-down-arrow svg {
+            width: 36px;
+            height: 36px;
+            fill: #00FFFF;
+            transition: transform 0.3s ease;
+        }
+
+        .scroll-down-arrow:hover svg {
+            transform: translateY(8px);
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(10px);
+            }
+        }
+
+        .contact-form-section {
+            background-image: url("{% static 'Bk1.jpg' %}");
+        }
+
+        .contact-form {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.2);
+            width: 100%;
+            max-width: 600px;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+
+        .contact-form.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .form-heading {
+            color: #00FFFF;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .form-input,
+        .form-textarea {
+            padding: 1rem;
+            background: transparent;
+            border: 2px solid #00FFFF;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 1rem;
+            outline: none;
+            transition: 0.3s ease;
+        }
+
+        .form-input:focus,
+        .form-textarea:focus {
+            box-shadow: 0 0 8px #00FFFF;
+        }
+
+        .form-button {
+            padding: 1rem;
+            background: #00FFFF;
+            color: #000;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        .form-button:hover {
+            background: #00c0d1;
+            box-shadow: 0 0 12px #00FFFF;
+        }
+
+        @media (max-width: 768px) {
+            .contact-heading {
+                font-size: 2.2rem;
+            }
+
+            .contact-subheading {
+                font-size: 1rem;
+                padding: 0 0.5rem;
+            }
+
+            .form-heading {
+                font-size: 1.6rem;
+            }
+
+            .form-input,
+            .form-textarea,
+            .form-button {
+                font-size: 0.95rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .contact-heading {
+                font-size: 1.8rem;
+            }
+
+            .contact-subheading {
+                font-size: 0.95rem;
+            }
+        }
+
+        button {
+            font-family: inherit;
+            font-size: 20px;
+            background: #00FFFF;
+            color: #FF073A;
+            padding: 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: none;
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+
+        button span {
+            display: block;
+            margin-left: 0.3rem;
+            transition: all 0.3s ease-in-out;
+        }
+
+        button svg {
+            display: block;
+            transform-origin: center center;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        button:hover .svg-wrapper {
+            animation: fly-1 0.6s ease-in-out infinite alternate;
+        }
+
+        button:hover span {
+            animation: fly-1 0.6s ease-in-out infinite alternate;
+        }
+
+        button:hover svg {
+            transform: translateX(0rem) rotate(45deg) scale(1.0);
+        }
+
+        button:hover span {
+            transform: translateX(0rem);
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+
+        @keyframes fly-1 {
+            from {
+                transform: translateY(0.1rem);
+            }
+
+            to {
+                transform: translateY(-0.1rem);
+            }
+        }
+
+        @keyframes fadeInLeftFull {
+            0% {
+                opacity: 0;
+                transform: translateX(-100vw);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .back {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            animation: fadeInLeftFull 2.5s ease-out;
+        }
+
+
+        .button {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #00FFFF;
+            border: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 5px #FF073A, 0 0 10px #FF073A;
+            cursor: pointer;
+            transition-duration: 0.3s;
+            position: absolute;
+        }
+
+        .svgIcon {
+            width: 12px;
+            transition-duration: 0.3s;
+        }
+
+        .svgIcon path {
+            fill: #FF073A;
+        }
+
+        .button:hover {
+            width: 140px;
+            border-radius: 50px;
+            transition-duration: 0.3s;
+            background-color: #00FFFF;
+            align-items: center;
+        }
+
+        .button:hover .svgIcon {
+            transition-duration: 0.2s;
+            transform: translateX(-800%);
+        }
+
+        .button::before {
+            position: absolute;
+            bottom: -20px;
+            content: "Back";
+            color: #FF073A;
+            font-size: 0px;
+        }
+
+        .button:hover::before {
+            font-size: 13px;
+            opacity: 1;
+            bottom: unset;
+            transition-duration: 0.3s;
+        }
+
+        select.form-input {
+            background: transparent;
+            border: 2px solid #00FFFF;
+            color: #A0A0A0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="back">
+        <a href="{% url 'home' %}">
+            <button class="button">
+                <svg class="svgIcon" viewBox="0 0 384 512">
+                    <path
+                        d="M32 256L192 416c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9L97.9 256 225.9 128c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0L32 256z">
+                    </path>
+                </svg>
+            </button>
+        </a>
+    </div>
+    <section class="contact-header-section">
+        <div class="contact-header-content">
+            <h2 class="contact-heading">Let’s Connect</h2>
+            <p class="contact-subheading">
+                I’m always open to discussing new projects, collaborations, or just chatting about tech and creativity.
+            </p>
+            <a href="#contact-form" class="scroll-down-arrow">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M12 16.5l-8-8h16l-8 8z" />
+                </svg>
+            </a>
+        </div>
+    </section>
+    <section id="contact-form" class="contact-form-section">
+        <form method="post" class="contact-form">
+            {% csrf_token %}
+            <h3 class="form-heading">Send Me a Message</h3>
+
+            {% if messages %}
+            <div style="color: #00FFFF; font-weight: bold;">
+                {% for message in messages %}
+                {{ message }}
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            {{ form.name }}
+            {{ form.email }}
+            {{ form.phone }}
+            {{ form.preferred_contact }}
+            {{ form.best_time }}
+            {{ form.message }}
+
+            <button type="submit">
+                <div class="svg-wrapper-1">
+                    <div class="svg-wrapper">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                            <path fill="none" d="M0 0h24v24H0z"></path>
+                            <path fill="currentColor"
+                                d="M1.946 9.315c-.522-.174-.527-.455.01-.634l19.087-6.362c.529-.176.832.12.684.638l-5.454 19.086c-.15.529-.455.547-.679.045L12 14l6-8-8 6-8.054-2.685z">
+                            </path>
+                        </svg>
+                    </div>
+                </div>
+                <span>Send</span>
+            </button>
+        </form>
+    </section>
+
+</body>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("visible");
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        const form = document.querySelector('.contact-form');
+        if (form) {
+            observer.observe(form);
+        }
+    });
+    document.addEventListener("DOMContentLoaded", function () {
+        const select = document.getElementById("preferred-contact");
+
+        function updateSelectStyle() {
+            if (select.value === "") {
+                select.style.background = "transparent";
+                select.style.color = "#A0A0A0";
+            } else {
+                select.style.background = "transparent";
+                select.style.color = "#E0E1DD";
+            }
+        }
+
+        updateSelectStyle();
+        select.addEventListener("change", updateSelectStyle);
+    });
+</script>
+
+</html>

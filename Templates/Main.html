@@ -1,0 +1,954 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+            will-change: opacity, transform;
+        }
+
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        html,
+        body {
+            height: 100%;
+            scroll-behavior: smooth;
+            font-family: 'Orbitron', sans-serif;
+            font-size: large;
+            overflow-x: hidden;
+            background-color: #000;
+        }
+
+        section {
+            height: 100vh;
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            overflow: hidden;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .bg1 {
+            background-image: url("{% static 'background3.jpg' %}");
+        }
+
+        .bg2 {
+            background-image: url("{% static 'back3.jpg' %}");
+        }
+
+        .bg3 {
+            background-image: url("{% static 'back4.jpg' %}");
+        }
+
+        .bg4 {
+            background-image: url("{% static 'background1.jpg' %}");
+        }
+
+        .bg5 {
+            background-image: url("{% static 'background2.jpg' %}");
+        }
+
+        .bg6 {
+            background-image: url("{% static 'back2.jpg' %}");
+        }
+
+        .bg7 {
+            background-image: url("{% static 'back3.jpg' %}");
+        }
+
+        .bg8 {
+            background-image: url("{% static 'background1.jpg' %}");
+        }
+
+        .bg1::before,
+        .bg2::before,
+        .bg3::before,
+        .bg4::before,
+        .bg5::before,
+        .bg6::before,
+        .bg7::before,
+        .bg8::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 0;
+        }
+
+        .content1 {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+            color: #E0E1DD;
+            max-width: 800px;
+            animation: fadeInUp 1.5s ease-in;
+        }
+
+        .content2 {
+            position: relative;
+            z-index: 1;
+            color: #E0E1DD;
+            max-width: 80vw;
+            animation: fadeInUp 1.5s ease-in;
+        }
+
+        .content3 {
+            position: relative;
+            z-index: 1;
+            color: #E0E1DD;
+            max-width: 80vw;
+            animation: fadeInUp 1.5s ease-in;
+        }
+
+        .content4 {
+            position: relative;
+            z-index: 1;
+            color: #E0E1DD;
+            max-width: 80vw;
+            animation: fadeInUp 1.5s ease-in;
+        }
+
+        .content5 {
+            position: relative;
+            z-index: 1;
+            color: #E0E1DD;
+            max-width: 90vw;
+            animation: fadeInUp 1.5s ease-in;
+        }
+
+        .content6 {
+            position: relative;
+            z-index: 1;
+            color: #E0E1DD;
+            max-width: 80vw;
+            animation: fadeInUp 1.5s ease-in;
+        }
+
+        .content8 {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+            color: #E0E1DD;
+            max-width: 800px;
+            animation: fadeInUp 1.5s ease-in;
+        }
+
+        .section-heading1 {
+            font-size: 3rem;
+            color: #FF073A;
+            margin-bottom: 1rem;
+        }
+
+        .section-heading2 {
+            font-size: 3rem;
+            color: #FF073A;
+            margin-bottom: 1rem;
+        }
+
+        .section-heading3 {
+            font-size: 3rem;
+            color: #FF073A;
+            margin-bottom: 1rem;
+        }
+
+        .section-heading4 {
+            font-size: 3rem;
+            color: #FF073A;
+            margin-bottom: 1rem;
+        }
+
+        .section-heading5 {
+            font-size: 3rem;
+            color: #FF073A;
+            margin-bottom: 1rem;
+        }
+
+        .section-heading6 {
+            font-size: 3rem;
+            color: #FF073A;
+            margin-bottom: 1rem;
+        }
+
+        .portfolio-intro1 {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            font-family: 'Petrona', serif;
+        }
+
+        .portfolio-intro2 {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            font-family: 'Petrona', serif;
+        }
+
+        .portfolio-intro3 {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            font-family: 'Petrona', serif;
+        }
+
+        .portfolio-intro4 {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            font-family: 'Petrona', serif;
+        }
+
+        .portfolio-intro5 {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            font-family: 'Petrona', serif;
+        }
+
+        .portfolio-intro6 {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            font-family: 'Petrona', serif;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .content4 .tech ul {
+            list-style: auto;
+            list-style-position: inside;
+            display: flex;
+            justify-content: center;
+            flex-direction: row;
+            gap: 3rem;
+        }
+
+        .content5 .tech ul {
+            list-style: auto;
+            list-style-position: inside;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: row;
+            gap: 4rem;
+
+        }
+
+        .content3 .tech ul {
+            list-style: auto;
+            list-style-position: inside;
+            display: flex;
+            justify-content: center;
+            flex-direction: row;
+            gap: 3rem;
+        }
+
+        .content2 .tech ul {
+            list-style: auto;
+            list-style-position: inside;
+            display: flex;
+            justify-content: center;
+            flex-direction: row;
+            gap: 3rem;
+        }
+
+        .content6 .tech ul {
+            list-style: auto;
+            list-style-position: inside;
+            display: flex;
+            justify-content: center;
+            flex-direction: row;
+            gap: 3rem;
+        }
+
+        .links {
+            display: flex;
+            flex-direction: column;
+            padding: 5rem;
+
+        }
+
+        .links a {
+            text-decoration: none;
+            color: white;
+        }
+
+        .content2 h3 {
+            padding: 2rem;
+            color: #00FFFF;
+        }
+
+        .content3 h3 {
+            padding: 3rem;
+            color: #00FFFF;
+        }
+
+        .content4 h3 {
+            padding: 3rem;
+            color: #00FFFF;
+        }
+
+        .content5 h3 {
+            color: #00FFFF;
+        }
+
+        .content6 h3 {
+            color: #00FFFF;
+        }
+
+        .content7 h3 {
+            color: #00FFFF;
+        }
+
+        .content8 h3 {
+            color: #00FFFF;
+        }
+
+        .description ul {
+            list-style-position: inside;
+        }
+
+        .content7 p {
+            padding: 1rem;
+            color: #E0E1DD;
+        }
+
+        .content8 .animated-button {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            padding: 16px 36px;
+            border: 4px solid;
+            border-color: transparent;
+            font-size: 16px;
+            border-radius: 100px;
+            font-weight: 600;
+            color: #1f387e;
+            box-shadow: 0 0 0 2px #ffffff;
+            cursor: pointer;
+            overflow: hidden;
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .content8 .animated-button svg {
+            position: absolute;
+            width: 24px;
+            fill: #1f387e;
+            z-index: 9;
+            transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .content8 .animated-button .arr-1 {
+            right: 16px;
+        }
+
+        .content8 .animated-button .arr-2 {
+            left: -25%;
+        }
+
+        .content8 .animated-button .circle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 20px;
+            height: 20px;
+            background-color: #c5e5e4;
+            border-radius: 50%;
+            opacity: 0;
+            transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .content8 .animated-button .text {
+            position: relative;
+            z-index: 1;
+            transform: translateX(-12px);
+            transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .content8 .animated-button:hover {
+            box-shadow: 0 0 0 12px transparent;
+            color: #212121;
+            border-radius: 12px;
+        }
+
+        .content8 .animated-button:hover .arr-1 {
+            right: -25%;
+        }
+
+        .content8 .animated-button:hover .arr-2 {
+            left: 16px;
+        }
+
+        .content8 .animated-button:hover .text {
+            transform: translateX(12px);
+        }
+
+        .content8 .animated-button:hover svg {
+            fill: #1f387e;
+        }
+
+        .content8 .animated-button:active {
+            scale: 0.95;
+            box-shadow: 0 0 0 4px greenyellow;
+        }
+
+        .content8 .animated-button:hover .circle {
+            width: 220px;
+            height: 220px;
+            opacity: 1;
+        }
+
+        .content8 a {
+            text-decoration: none;
+        }
+
+        @keyframes fadeInLeftFull {
+            0% {
+                opacity: 0;
+                transform: translateX(-100vw);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .back {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            animation: fadeInLeftFull 2.5s ease-out;
+        }
+
+
+        .button {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #00FFFF;
+            border: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 5px #FF073A, 0 0 10px #FF073A;
+            cursor: pointer;
+            transition-duration: 0.3s;
+            position: absolute;
+        }
+
+        .svgIcon {
+            width: 12px;
+            transition-duration: 0.3s;
+        }
+
+        .svgIcon path {
+            fill: #FF073A;
+        }
+
+        .button:hover {
+            width: 140px;
+            border-radius: 50px;
+            transition-duration: 0.3s;
+            background-color: #00FFFF;
+            align-items: center;
+        }
+
+        .button:hover .svgIcon {
+            transition-duration: 0.2s;
+            transform: translateX(-800%);
+        }
+
+        .button::before {
+            position: absolute;
+            bottom: -20px;
+            content: "Back";
+            color: #FF073A;
+            font-size: 0px;
+        }
+
+        .button:hover::before {
+            font-size: 13px;
+            opacity: 1;
+            bottom: unset;
+            transition-duration: 0.3s;
+        }
+
+        @media (max-width: 1024px) {
+
+            .content2,
+            .content3,
+            .content4,
+            .content5,
+            .content6 {
+                max-width: 90vw;
+                padding: 1rem;
+            }
+
+            .section-heading1,
+            .section-heading2,
+            .section-heading3,
+            .section-heading4,
+            .section-heading5,
+            .section-heading6 {
+                font-size: 2.5rem;
+            }
+
+            .portfolio-intro1,
+            .portfolio-intro2,
+            .portfolio-intro3,
+            .portfolio-intro4,
+            .portfolio-intro5,
+            .portfolio-intro6 {
+                font-size: 1.1rem;
+            }
+
+            .links {
+                padding: 2rem;
+            }
+
+            .content4 .tech ul,
+            .content5 .tech ul,
+            .content3 .tech ul,
+            .content2 .tech ul,
+            .content6 .tech ul {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+
+            .section-heading1,
+            .section-heading2,
+            .section-heading3,
+            .section-heading4,
+            .section-heading5,
+            .section-heading6 {
+                font-size: 2rem;
+            }
+
+            .portfolio-intro1,
+            .portfolio-intro2,
+            .portfolio-intro3,
+            .portfolio-intro4,
+            .portfolio-intro5,
+            .portfolio-intro6 {
+                font-size: 1rem;
+                line-height: 1.6;
+            }
+
+            .content1,
+            .content2,
+            .content3,
+            .content4,
+            .content5,
+            .content6,
+            .content7,
+            .content8 {
+                font-size: 13.5px;
+            }
+
+            .tech ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .links {
+                padding: 2rem 1rem;
+                gap: 1rem;
+            }
+
+            .content8 .animated-button {
+                padding: 14px 28px;
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+
+            .section-heading1,
+            .section-heading2,
+            .section-heading3,
+            .section-heading4,
+            .section-heading5,
+            .section-heading6 {
+                font-size: 1.6rem;
+            }
+
+            .portfolio-intro1,
+            .portfolio-intro2,
+            .portfolio-intro3,
+            .portfolio-intro4,
+            .portfolio-intro5,
+            .portfolio-intro6 {
+                font-size: 0.95rem;
+            }
+
+            .links {
+                gap: 0rem;
+            }
+
+            .content8 .animated-button {
+                flex-direction: column;
+                gap: 0.5rem;
+                padding: 12px 24px;
+            }
+
+            .back {
+                top: 15px;
+                left: 15px;
+            }
+
+            .button {
+                width: 40px;
+                height: 40px;
+            }
+
+            .button:hover {
+                width: 100px;
+            }
+
+            .button::before {
+                font-size: 0;
+            }
+
+            .button:hover::before {
+                font-size: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="back">
+        <a href="{% url 'home' %}">
+            <button class="button">
+                <svg class="svgIcon" viewBox="0 0 384 512">
+                    <path
+                        d="M32 256L192 416c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9L97.9 256 225.9 128c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0L32 256z">
+                    </path>
+                </svg>
+            </button>
+        </a>
+    </div>
+    <section class="bg bg1">
+        <div class="content1">
+            <h2 class="section-heading1 fade-in-section">The Portfolio</h2>
+            <p class="portfolio-intro1 fade-in-section">
+                Welcome to my portfolio — a curated constellation of ideas turned into code.<br />
+                Every project here is a chapter of my journey as a web and software developer,<br />
+                where design meets logic, and creativity dances with structure.<br />
+                Explore the work that speaks louder than words.
+            </p>
+        </div>
+    </section>
+
+    <section class="bg bg2">
+        <div class="content2">
+            <h2 class="section-heading2 fade-in-section">My Projects</h2>
+            <p class="portfolio-intro2 fade-in-section">
+            <h3 class="fade-in-section"><u>Project 1: Training FeedBack System</u></h3><br>
+            <div class="description fade-in-section">
+                <ul>
+                    <li>Collected post-training feedback with role-based logins and event-linked analytics.</li><br>
+                    <li>Developed a feedback system to gather responses from trainees post-training sessions.
+                    </li><br>
+                    <li>Implemented role-based login and dynamic event linking with admin-side analytics display.</li>
+                    <br>
+                </ul>
+            </div>
+            <h3 class="fade-in-section"><u>Tech Stack:</u></h3><br>
+            <div class="tech fade-in-section">
+                <ul>
+                    <li>Django</li><br>
+                    <li>SQLite3</li><br>
+                    <li>Python</li><br>
+                    <li>HTML</li><br>
+                    <li>CSS</li><br>
+                    <li>JavaScript</li>
+                </ul>
+            </div>
+            </p>
+            <div class="links fade-in-section">
+                <a href="https://trainingfeedbacksystem.onrender.com/" target="_blank">🔗 View Live</a><br>
+                <a href="https://github.com/Vipul-Kumar-Dev/IAA-Internship.git" target="_blank">💻 Source Code</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg bg3">
+        <div class="content3">
+            <p class="portfolio-intro3 fade-in-section">
+            <h3 class="fade-in-section"><u>Project 2: IAA_CRM (Contract Management System)</u></h3><br>
+            <div class="description fade-in-section">
+                <ul>
+                    <li>CRM system for IAA with user roles, contract alerts, and digital signature integration.</li><br>
+                    <li>Built CRM for Indian Aviation Academy with user roles, auto-login, version control & alerts.
+                    </li><br>
+                    <li>Integrated contract renewal reminders and digital signature functionality</li><br>
+                </ul>
+            </div>
+            <h3 class="fade-in-section"><u>Tech Stack:</u></h3><br>
+            <div class="tech fade-in-section">
+                <ul>
+                    <li>Django</li><br>
+                    <li>SQLite3</li><br>
+                    <li>Python</li><br>
+                    <li>HTML</li><br>
+                    <li>CSS</li><br>
+                    <li>JavaScript</li>
+                </ul>
+            </div>
+            </p>
+            <div class="links fade-in-section">
+                <a href="" target="_blank">🔗 View Live</a><br>
+                <a href="" target="_blank">💻 Source Code</a>
+            </div>
+        </div>
+    </section>
+    <section class="bg bg4">
+        <div class="content4">
+            <p class="portfolio-intro4 fade-in-section">
+            <h3 class="fade-in-section"><u>Project 3: Invoice Generator</u></h3><br>
+            <div class="description fade-in-section">
+                <ul>
+                    <li>Created PDF invoices with tax calculations and itemized entry support.</li><br>
+                    <li>Created a dynamic invoice generation system for training-related billing in PDF format.</li><br>
+                    <li>Supported itemized entry, tax calculations, and invoice history tracking.</li><br>
+                </ul>
+            </div>
+            <h3 class="fade-in-section"><u>Tech Stack:</u></h3><br>
+            <div class="tech fade-in-section">
+                <ul>
+                    <li>Django</li><br>
+                    <li>SQLite3</li><br>
+                    <li>Python</li><br>
+                    <li>HTML</li><br>
+                    <li>CSS</li><br>
+                    <li>JavaScript</li>
+                </ul>
+            </div>
+            </p>
+            <div class="links fade-in-section">
+                <a href="" target="_blank">🔗 View Live</a><br>
+                <a href="" target="_blank">💻 Source Code</a>
+            </div>
+        </div>
+    </section>
+    <section class="bg bg5">
+        <div class="content5 fade-in-section">
+            <h2 class="section-heading5 fade-in-section">Skills & Technologies</h2>
+            <p class="portfolio-intro5 fade-in-section">
+            <h3 class="fade-in-section"><u>Programming Languages</u></h3><br>
+            <div class="tech fade-in-section">
+                <ul>
+                    <li>Python</li>
+                    <li>HTML</li>
+                    <li>CSS</li>
+                    <li>JavaScript</li>
+                    <li>C Language</li>
+                    <li>C++</li>
+                    <li>PHP</li>
+                    <li>Java</li>
+                </ul><br>
+            </div>
+            <h3 class="fade-in-section"><u>Databases and Languages</u></h3><br>
+            <div class="tech fade-in-section">
+                <ul>
+                    <li>Experienced in SQLite3</li>
+                    <li>MySQL</li>
+                </ul><br>
+            </div>
+            <h3 class="fade-in-section"><u>Frameworks</u></h3><br>
+            <div class="tech fade-in-section">
+                <ul>
+                    <li>Working Experience in Django</li>
+                    <li>MERN Stack (Intermediate)</li>
+                </ul><br>
+            </div>
+            <h3 class="fade-in-section"><u>Version Control Tools and IDE</u></h3><br>
+            <div class="tech fade-in-section">
+                <ul>
+                    <li>Git</li>
+                    <li>GitHub</li>
+                    <li>Visual Studio Code</li>
+                </ul><br>
+            </div>
+            <h3 class="fade-in-section"><u>Course Work</u></h3><br>
+            <div class="tech fade-in-section">
+                <ul>
+                    <li>Database Management System</li>
+                    <li>Object-Oriented Programming</li>
+                    <li>Computer Networks</li>
+                    <li>Operating Systems</li>
+                    <li>Data Structure and Algorithms</li>
+                </ul><br>
+            </div>
+            <h3 class="fade-in-section"><u>Soft Skills</u></h3><br>
+            <div class="tech fade-in-section">
+                <ul>
+                    <li>Collaboration</li>
+                    <li>Communication</li>
+                    <li>Planning</li>
+                    <li>Teamwork</li>
+                    <li>Time Management</li>
+                    <li>Leadership</li>
+                </ul>
+            </div>
+            </p>
+        </div>
+    </section>
+    <section class="bg bg6">
+        <div class="content6">
+            <h2 class="section-heading6 fade-in-section">Work Experience</h2><br>
+            <p class="portfolio-intro6 fade-in-section">
+            <h3 class="fade-in-section"><u>Software Developer Intern | Indian Aviation Academy</u></h3><br>
+            <div class="tech fade-in-section">
+                <ul>
+                    <li>Django Framework</li>
+                    <li>SQLite3</li>
+                    <li>HTML</li>
+                    <li>CSS</li>
+                    <li>Javascript</li>
+                    <li>Python</li>
+                </ul><br>
+            </div>
+            <div class="description fade-in-section">
+                <ul>
+                    <li>Worked on Web App development using Django, with emphasis on
+                        database integration and logic implementation.</li><br>
+                    <li>Collaborated with the technical team to enhance system functionality
+                        and improve user experience.</li><br>
+                </ul>
+            </div><br>
+            <h3 class="fade-in-section"><u>Web Developer Intern | TheBlackPearls (Online Internship)</u></h3><br>
+            <div class="tech fade-in-section">
+                <ul>
+                    <li>HTML</li>
+                    <li>CSS</li>
+                    <li>JavaScript</li>
+                </ul><br>
+            </div>
+            <div class="description fade-in-section">
+                <ul>
+                    <li>Assisted in developing and maintaining responsive web interfaces
+                        using HTML, CSS, and JavaScript.</li><br>
+                    <li>Gained practical experience in real-world web development workflows
+                        through remote collaboration and task-based contributions.</li><br>
+                </ul>
+            </div><br>
+            <h3 class="fade-in-section"><u>Web Developer Intern | TheBlackPearls (Online Internship)</u></h3><br>
+            <div class="tech fade-in-section">
+                <ul>
+                    <li>HTML</li>
+                    <li>CSS</li>
+                    <li>JavaScript</li>
+                </ul><br>
+            </div>
+            <div class="description fade-in-section">
+                <ul>
+                    <li>Built and integrated frontend and backend components for
+                        dynamic web applications using modern web technologies.</li><br>
+                    <li>Enhanced skills in full stack development through practical exposure to
+                        both client-side and server-side programming.</li><br>
+                </ul>
+            </div>
+    </section>
+    <section class="bg bg7">
+        <div class="content7">
+            <h2 class="section-heading3 fade-in-section">Certifications</h2><br>
+            <p class="portfolio-intro7 fade-in-section">
+            <h3 class="fade-in-section"><u>C Language</u></h3><br>
+            <div class="description fade-in-section">
+                <p>Naresh IT, Hyderabad</p>
+            </div><br>
+            <h3 class="fade-in-section"><u>Java Programming</u></h3><br>
+            <div class="description fade-in-section">
+                <p>Udemy</p>
+            </div><br>
+            <h3 class="fade-in-section"><u>Python and Django Full-Stack Web Development</u></h3><br>
+            <div class="description fade-in-section">
+                <p>Udemy</p>
+            </div>
+            <h3 class="fade-in-section"><u>React, NodeJS, Express & MongoDB - The MERN Full stack</u></h3><br>
+            <div class="description fade-in-section">
+                <p>Udemy</p>
+            </div>
+    </section>
+    <section class="bg bg8">
+        <div class="content8">
+            <h2 class="section-heading3 fade-in-section">Download Resume</h2><br>
+            <p class="fade-in-section">
+                Click the button below to download my resume and explore my professional journey.
+                Stay connected with my skills, experiences, and achievements in a single PDF
+            </p>
+            <a href="{% static 'Resume.pdf' %}" download style="padding: 2rem;"><button
+                    class="animated-button fade-in-section">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="arr-2" viewBox="0 0 24 24">
+                        <path
+                            d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
+                        </path>
+                    </svg>
+                    <span class="text fade-in-section">Download</span>
+                    <span class="circle"></span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="arr-1" viewBox="0 0 24 24">
+                        <path
+                            d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
+                        </path>
+                    </svg>
+                </button></a>
+    </section>
+    </section>
+</body>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("is-visible");
+                    observer.unobserve(entry.target); // animate only once
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll(".fade-in-section").forEach(section => {
+            observer.observe(section);
+        });
+    });
+</script>
+
+</html>

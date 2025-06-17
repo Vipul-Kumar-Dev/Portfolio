@@ -1,0 +1,255 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Me</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            height: 100%;
+            font-family: 'Orbitron', sans-serif;
+            overflow: hidden;
+            background-image: url("{% static 'Background1.jpg' %}");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .about-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            color: #E0E1DD;
+        }
+
+        .about-content-container {
+            padding: 0rem 20rem;
+            animation: fadeInUp 1.2s ease-out;
+        }
+
+        .about-heading {
+            font-size: 3rem;
+            color: #00FFFF;
+            margin-bottom: 1.5rem;
+            font-family: 'Orbitron', sans-serif;
+            text-align: center;
+        }
+
+        .about-paragraph {
+            font-size: 1.1rem;
+            font-family: 'Petrona', serif;
+            line-height: 1.8;
+            text-align: justify;
+            animation: fadeInUp 1.4s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .about-content-container {
+                padding: 0 8rem;
+            }
+
+            .about-heading {
+                font-size: 2.5rem;
+            }
+
+            .about-paragraph {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .about-content-container {
+                padding: 0 3rem;
+            }
+
+            .about-heading {
+                font-size: 2rem;
+            }
+
+            .about-paragraph {
+                font-size: 0.95rem;
+            }
+
+            .button {
+                width: 45px;
+                height: 45px;
+            }
+
+            .button:hover {
+                width: 120px;
+            }
+
+            .button::before {
+                font-size: 0px;
+            }
+
+            .button:hover::before {
+                font-size: 11px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .about-content-container {
+                padding: 0 1.5rem;
+            }
+
+            .about-heading {
+                font-size: 1.6rem;
+            }
+
+            .about-paragraph {
+                font-size: 0.9rem;
+                line-height: 1.6;
+            }
+
+            .button {
+                width: 40px;
+                height: 40px;
+            }
+
+            .button:hover {
+                width: 100px;
+            }
+
+            .button::before {
+                font-size: 0px;
+            }
+
+            .button:hover::before {
+                font-size: 10px;
+            }
+        }
+
+
+        @keyframes fadeInLeftFull {
+            0% {
+                opacity: 0;
+                transform: translateX(-100vw);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .back {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            animation: fadeInLeftFull 2.5s ease-out;
+        }
+
+
+        .button {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #00FFFF;
+            border: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 5px #FF073A, 0 0 10px #FF073A;
+            cursor: pointer;
+            transition-duration: 0.3s;
+            position: absolute;
+        }
+
+        .svgIcon {
+            width: 12px;
+            transition-duration: 0.3s;
+        }
+
+        .svgIcon path {
+            fill: #FF073A;
+        }
+
+        .button:hover {
+            width: 140px;
+            border-radius: 50px;
+            transition-duration: 0.3s;
+            background-color: #00FFFF;
+            align-items: center;
+        }
+
+        .button:hover .svgIcon {
+            transition-duration: 0.2s;
+            transform: translateX(-800%);
+        }
+
+        .button::before {
+            position: absolute;
+            bottom: -20px;
+            content: "Back";
+            color: #FF073A;
+            font-size: 0px;
+        }
+
+        .button:hover::before {
+            font-size: 13px;
+            opacity: 1;
+            bottom: unset;
+            transition-duration: 0.3s;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="back">
+        <a href="{% url 'home' %}">
+            <button class="button">
+                <svg class="svgIcon" viewBox="0 0 384 512">
+                    <path
+                        d="M32 256L192 416c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9L97.9 256 225.9 128c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0L32 256z">
+                    </path>
+                </svg>
+            </button>
+        </a>
+    </div>
+    <section class="about-section">
+        <div class="about-content-container">
+            <h2 class="about-heading">About Me</h2>
+            <p class="about-paragraph">
+                I'm Vipul Kumar — a web and software developer passionate about transforming logic into immersive
+                digital experiences.
+                Currently pursuing my BCA from BCIT, I specialize in building responsive, database-driven web
+                applications using
+                modern technologies like Django and the MERN stack.
+                <br><br>
+                From managing contracts at Indian Aviation Academy to crafting dynamic feedback and billing systems,
+                I love bringing ideas to life through clean code, intuitive interfaces, and smart functionality.
+                My approach is deeply rooted in curiosity, collaboration, and a constant drive to learn and innovate.
+                <br><br>
+                Outside of code, I find rhythm in music and inspiration in sci-fi cinema. Whether it’s crafting seamless
+                user journeys
+                or solving backend logic puzzles, I aim to build solutions that not only work — but resonate.
+            </p>
+        </div>
+    </section>
+
+</body>
+
+</html>
