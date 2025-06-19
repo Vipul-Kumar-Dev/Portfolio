@@ -14,13 +14,12 @@ class ContactMessage(models.Model):
     submitted_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"Message from {self.name} ({self.email})"
+        return self.name
 
-
-class FAQQuestion(models.Model):
-    name = models.CharField(max_length=100)
-    email = models.EmailField()
-    question = models.TextField()
+class FAQ(models.Model):
+    question = models.CharField(max_length=255)
+    answer = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"Question from {self.name}"
+        return self.question
